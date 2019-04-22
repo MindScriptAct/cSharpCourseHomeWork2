@@ -10,110 +10,108 @@ namespace FindMagicNumber
     {
         static void Main(string[] args)
         {
-            // Magic Number
             int magicNumber = 0;
-            int multipliedNumber = 0;
+            int multipliedBySixNr = 0;
+            int multipliedByFiveNr = 0;
+            int multipliedByFourNr = 0;
+            int multipliedByThreeNr = 0;
+            int multipliedByTwoNr = 0;
 
-            // sukurti pirmą tuščią masyvą
-            int[] myArray1 = new int[6];
+            int[] magicNrArray = new int[6];
+            int[] myArray2 = new int[6];
+            int[] myArray3 = new int[6];
+            int[] myArray4 = new int[6];
+            int[] myArray5 = new int[6];
+            int[] myArray6 = new int[6];
 
-
-            // sukurti atsitiktinių skaičių generatorių
             Random random = new Random();
 
-            
-            // patikrinti ar nėra dublikatų ir ar skaičius padauginus netapo per didelis
-            while (NumbersDublicate(myArray1) == true || NumberTooBig(multipliedNumber) == true)
+            while (
+                CheckIfBadNumber(magicNrArray, multipliedBySixNr) == true ||
+                NumbersDublicate(myArray2) == true ||
+                ArraysContainSameNubers(magicNrArray, myArray2) == false ||
+                NumbersDublicate(myArray3) == true ||
+                ArraysContainSameNubers(magicNrArray, myArray3) == false)
             {
-                // atsitiktinis sveikasis skaičius
                 int randomNumber = random.Next(100000, 999999);
 
+                AddToArray(ConvertToString(randomNumber), magicNrArray);
 
-                // atsitiktinį sveikąjį skaičių išskaidyti į masyvą
-                // ats. svk. skč. paverstas į eilutė, kad galima būtų išskaidyti į masyvą
-                string random_NrToString = ConvertToString(randomNumber);
-
-                // eilutė išskaidyta į masyvą
-                AddToArray(random_NrToString, myArray1);
-
-                // jeigu dublikuojasi skaitmenys pradėti ciklą iš naujo
-                if (NumbersDublicate(myArray1) == true)
+                if (NumbersDublicate(magicNrArray) == true)
                 {
                     continue;
                 }
 
+                magicNumber = ConvertToInt(magicNrArray);
 
-                // patikrina ar skaičius ne per didelis
-                // tikėtinas magiškas skaičius
-                magicNumber = ConvertToInt(myArray1);
+                multipliedBySixNr = magicNumber * 6;
 
-                // mag. skč. padaugintas iš dviejų
-                multipliedNumber = magicNumber * 2;
-
-                // jeigu per didelis skaičius pradėti ciklą iš naujo
-                if (NumberTooBig(multipliedNumber) == true)
+                if (NumberTooBig(multipliedBySixNr) == true)
                 {
                     continue;
                 }
 
+                AddToArray(ConvertToString(multipliedBySixNr), myArray2);
 
-                // sukurti antrą masyvą palyginimui
-                    int[] myArray2 = new int[6];
-
-
-                // padaugintą sveikąjį skaičių išskaidyti į masyvą
-                // pad. svk. skč. paverstas į eilutė, kad galima būtų išskaidyti į masyvą
-                string multiplied_NrToString = ConvertToString(multipliedNumber);
-
-                // eilutė išskaidyta į masyvą
-                AddToArray(multiplied_NrToString, myArray2);
-
-
-                // palyginti masyvus
-                bool foundSameNr = false;
-                for (int i = 0; i < myArray1.Length; i++)
+                if (NumbersDublicate(myArray2) == true)
                 {
+                    continue;
+                }
+        
+                if (ArraysContainSameNubers(magicNrArray, myArray2) == true)
+                {
+                    multipliedByFiveNr = magicNumber * 5;
 
+                    AddToArray(ConvertToString(multipliedByFiveNr), myArray3);
 
-                    for (int j = 0; j < myArray2.Length; j++)
+                    if (NumbersDublicate(myArray3) == true)
                     {
+                        continue;
+                    }
 
+                    if (ArraysContainSameNubers(magicNrArray, myArray3) == true)
+                    {
+                        multipliedByFourNr = magicNumber * 4;
+                        multipliedByThreeNr = magicNumber * 3;
+                        multipliedByTwoNr = magicNumber * 2;
 
-                        if (myArray1[i] == myArray2[j])
+                        AddToArray(ConvertToString(multipliedByFourNr), myArray4);
+                        AddToArray(ConvertToString(multipliedByThreeNr), myArray5);
+                        AddToArray(ConvertToString(multipliedByTwoNr), myArray6);
+
+                        if (ArraysContainSameNubers(magicNrArray, myArray4) == true &&
+                            ArraysContainSameNubers(magicNrArray, myArray5) == true &&
+                            ArraysContainSameNubers(magicNrArray, myArray6) == true)
                         {
-                            foundSameNr = true;
-                            Console.WriteLine($"Masyve1 skaičius {myArray1[i]} buvo rastas Masyve2");
+                            Console.WriteLine($"Magiskas skaicius yra {magicNumber}");
+                            Console.WriteLine($"Jis padaugintas iš 6 yra {multipliedBySixNr}");
+                            Console.WriteLine($"Jis padaugintas iš 5 yra {multipliedByFiveNr}");
+                            Console.WriteLine($"Jis padaugintas iš 4 yra {multipliedByFourNr}");
+                            Console.WriteLine($"Jis padaugintas iš 3 yra {multipliedByThreeNr}");
+                            Console.WriteLine($"Jis padaugintas iš 2 yra {multipliedByTwoNr}");
                         }
                     }
-
-
-                    if (foundSameNr == false)
-                    {
-                        Console.WriteLine($"Masyve1 skaičius {myArray1[i]} nebuvo rastas Masyve2");
-                    }
-
-
-                    foundSameNr = false;
                 }
             }
-
-            Console.WriteLine($"mano padaugintas skaicius {multipliedNumber}");
-            Console.WriteLine($"mano skaicius {magicNumber}");
-            
             Console.ReadKey();
         }
 
         static string ConvertToString(int number)
         {
-            return (Convert.ToString(number));
+            return Convert.ToString(number);
         }
 
         static void AddToArray(string NrToString, int[] myArray)
         {
             for (int i = 0; i < NrToString.Length; i++)
             {
-                myArray[i] = NrToString[i] - '0'; // <- kas yra '0'?
+                myArray[i] = NrToString[i] - '0';
             }
+        }
+
+        static bool CheckIfBadNumber(int[] myArray, int number)
+        {
+            return NumbersDublicate(myArray) || NumberTooBig(number);
         }
 
         static bool NumbersDublicate(int[] myArray)
@@ -143,13 +141,47 @@ namespace FindMagicNumber
             {
                 myNumber += myArray[i] * Convert.ToInt32(Math.Pow(10, myArray.Length - i - 1));
             }
-
             return myNumber;
         }
 
         static bool NumberTooBig(int number)
         {
             return number > 999999;
+        }
+
+        static bool ArraysContainSameNubers(int[] arrayA, int[] arrayB)
+        {
+            bool value = true;
+
+            for (int i = 0; i < arrayA.Length; i++)
+            {
+                for (int j = 0; j < arrayB.Length; j++)
+                {
+                    if (arrayA[i] != arrayB[j])
+                    {
+                        if (j == arrayB.Length - 1)
+                        {
+                            value = false;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (value == false)
+                {
+                    break;
+                }
+            }
+            if (value == false)
+            {
+                return value;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
