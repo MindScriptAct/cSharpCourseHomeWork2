@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FindMagicNumber")]
+[assembly: AssemblyTitle("HomeWorkTwo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FindMagicNumber")]
+[assembly: AssemblyProduct("HomeWorkTwo")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1ea8ea75-9dce-421d-aa2a-eb7073fe79d8")]
+[assembly: Guid("40d1d0f1-570f-4b8d-a73f-2078676a0e8c")]
 
 // Version information for an assembly consists of the following four values:
 //
