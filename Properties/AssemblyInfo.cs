@@ -1,15 +1,15 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FindMagicNumber")]
+[assembly: AssemblyTitle("NamuDarbas2_MagicNumber")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FindMagicNumber")]
+[assembly: AssemblyProduct("NamuDarbas2_MagicNumber")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1ea8ea75-9dce-421d-aa2a-eb7073fe79d8")]
+[assembly: Guid("8be30060-5cc4-433d-8e6d-d3e1e02b8ffe")]
 
 // Version information for an assembly consists of the following four values:
 //

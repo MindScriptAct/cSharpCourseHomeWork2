@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1EA8EA75-9DCE-421D-AA2A-EB7073FE79D8}</ProjectGuid>
+    <ProjectGuid>{8BE30060-5CC4-433D-8E6D-D3E1E02B8FFE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FindMagicNumber</RootNamespace>
-    <AssemblyName>FindMagicNumber</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>NamuDarbas2_MagicNumber</RootNamespace>
+    <AssemblyName>NamuDarbas2_MagicNumber</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
