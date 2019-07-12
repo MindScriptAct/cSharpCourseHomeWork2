@@ -37,6 +37,8 @@ namespace FindMagicNumber
                                 if (CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray))
                                 {
                                     Congratulations(TryNumber);
+
+
                                 }
                             }
                             else
