@@ -12,61 +12,75 @@ namespace FindMagicNumber
         {
             Console.WriteLine("Hello\n");
 
-            int multiplication = 2;
-
-            for (int i = 0; i < 5; i++)
+            for (int i = 123456; i < 166666; i++)
             {
-                Console.WriteLine("Numbers devided by: {0}", multiplication);
 
-                for (int j = 123456; j < 166666; j++)
+                int TryNumber = i;
+
+
+                int[] TryNumberInArray = IntToIntArray(TryNumber);
+
+                if (AllNumbersDifferent(TryNumberInArray))
                 {
+                    int[] MultipliedNumberInArray_by2 = IntToIntArray(Multiplication(TryNumber, 2));
+                    int[] MultipliedNumberInArray_by3 = IntToIntArray(Multiplication(TryNumber, 3));
+                    int[] MultipliedNumberInArray_by4 = IntToIntArray(Multiplication(TryNumber, 4));
+                    int[] MultipliedNumberInArray_by5 = IntToIntArray(Multiplication(TryNumber, 5));
+                    int[] MultipliedNumberInArray_by6 = IntToIntArray(Multiplication(TryNumber, 6));
 
-                    int TryNumber = j;
-                    
 
-                    int[] TryNumberInArray = IntToIntArray(TryNumber);
-
-                    if (AllNumbersDifferent(TryNumberInArray))
+                    if (
+                           AllNumbersDifferent(MultipliedNumberInArray_by2)
+                        && AllNumbersDifferent(MultipliedNumberInArray_by3)
+                        && AllNumbersDifferent(MultipliedNumberInArray_by4)
+                        && AllNumbersDifferent(MultipliedNumberInArray_by5)
+                        && AllNumbersDifferent(MultipliedNumberInArray_by6)
+                        )
                     {
-                        int[] MultipliedNumberInArray = IntToIntArray(Multiplication(TryNumber, multiplication));
 
-                        if (AllNumbersDifferent(MultipliedNumberInArray))
+                        if (CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by2)
+                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by3)
+                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by4)
+                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by5)
+                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by6)
+                            )
                         {
-                            if (CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray))
+                            if (CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by2)
+                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by3)
+                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by4)
+                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by5)
+                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by6)
+                                )
                             {
-                                if (CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray))
-                                {
-                                    Congratulations(TryNumber);
-
-
-                                }
+                                Congratulations(TryNumber);
                             }
-                            else
-                            {
-                                //Console.WriteLine("Some of the two comparing ARRAY elements are in the same position");
-                            }
-
                         }
                         else
                         {
-                            //Console.WriteLine("After multiplication number is larger than 6 elements,\n or not all numbers are different");
+                            //Console.WriteLine("Some of the two comparing ARRAY elements are in the same position");
                         }
                     }
                     else
                     {
-                        //Console.WriteLine("Your number is not with different int's");
+                        //Console.WriteLine("After multiplication number is larger than 6 elements,\n or not all numbers are different");
+
                     }
 
+
+                }
+                else
+                {
+                    //Console.WriteLine("Your number is not with different int's");
                 }
 
-                multiplication++;
+               
+
             }
-            Console.ReadKey();
 
+            Console.ReadLine();
+
+            // FUNCTIONS
         }
-
-        // FUNCTIONS
-
         static bool AllNumbersDifferent(int[] numbers)
         {
 
@@ -155,3 +169,4 @@ namespace FindMagicNumber
         }
     }
 }
+
