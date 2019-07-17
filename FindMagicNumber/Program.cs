@@ -10,76 +10,38 @@ namespace FindMagicNumber
     {
         static void Main()
         {
+
+
             Console.WriteLine("Hello\n");
 
-            for (int i = 123456; i < 166666; i++)
+            for (int i = 100000; i < 1000000; i++)
             {
 
                 int TryNumber = i;
-
-
                 int[] TryNumberInArray = IntToIntArray(TryNumber);
+
 
                 if (AllNumbersDifferent(TryNumberInArray))
                 {
-                    int[] MultipliedNumberInArray_by2 = IntToIntArray(Multiplication(TryNumber, 2));
-                    int[] MultipliedNumberInArray_by3 = IntToIntArray(Multiplication(TryNumber, 3));
-                    int[] MultipliedNumberInArray_by4 = IntToIntArray(Multiplication(TryNumber, 4));
-                    int[] MultipliedNumberInArray_by5 = IntToIntArray(Multiplication(TryNumber, 5));
-                    int[] MultipliedNumberInArray_by6 = IntToIntArray(Multiplication(TryNumber, 6));
-
-
                     if (
-                           AllNumbersDifferent(MultipliedNumberInArray_by2)
-                        && AllNumbersDifferent(MultipliedNumberInArray_by3)
-                        && AllNumbersDifferent(MultipliedNumberInArray_by4)
-                        && AllNumbersDifferent(MultipliedNumberInArray_by5)
-                        && AllNumbersDifferent(MultipliedNumberInArray_by6)
+                        CompareTwoArraysSameValueElements(TryNumberInArray, IntToIntArray(TryNumber * 2))
+                        && CompareTwoArraysSameValueElements(TryNumberInArray, IntToIntArray(TryNumber * 3))
+                        && CompareTwoArraysSameValueElements(TryNumberInArray, IntToIntArray(TryNumber * 4))
+                        && CompareTwoArraysSameValueElements(TryNumberInArray, IntToIntArray(TryNumber * 5))
+                        && CompareTwoArraysSameValueElements(TryNumberInArray, IntToIntArray(TryNumber * 6))
                         )
                     {
-
-                        if (CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by2)
-                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by3)
-                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by4)
-                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by5)
-                            && CompareTwoArraysNotSamePositionElements(TryNumberInArray, MultipliedNumberInArray_by6)
-                            )
-                        {
-                            if (CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by2)
-                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by3)
-                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by4)
-                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by5)
-                                && CompareTwoArraysSameValueElements(TryNumberInArray, MultipliedNumberInArray_by6)
-                                )
-                            {
-                                Congratulations(TryNumber);
-                            }
-                        }
-                        else
-                        {
-                            //Console.WriteLine("Some of the two comparing ARRAY elements are in the same position");
-                        }
+                        Console.WriteLine("Congratulations MAGIC NUMBER IS: {0}", TryNumber);
                     }
-                    else
-                    {
-                        //Console.WriteLine("After multiplication number is larger than 6 elements,\n or not all numbers are different");
-
-                    }
-
-
                 }
-                else
-                {
-                    //Console.WriteLine("Your number is not with different int's");
-                }
-
-               
-
             }
 
+            Console.WriteLine("\nGood Bye");
             Console.ReadLine();
 
             // FUNCTIONS
+
+
         }
         static bool AllNumbersDifferent(int[] numbers)
         {
@@ -117,30 +79,6 @@ namespace FindMagicNumber
             return arr;
         }
 
-        static int Multiplication(int x, int mulipl)
-        {
-            return x * mulipl;
-
-        }
-
-        static bool CompareTwoArraysNotSamePositionElements(int[] arr1, int[] arr2)
-        {
-            if (arr1.Length == arr2.Length)
-            {
-                for (int i = 0; i < arr1.Length; i++)
-                {
-                    if (arr1[i].Equals(arr2[i]))
-                    {
-                        return false;
-                    }
-                }
-
-            }
-
-            return true;
-
-        }
-
         static bool CompareTwoArraysSameValueElements(int[] arr1, int[] arr2)
         {
             int sum = 0;
@@ -160,12 +98,8 @@ namespace FindMagicNumber
             {
                 return true;
             }
-            return false;
-        }
 
-        static void Congratulations(int x)
-        {
-            Console.WriteLine("Congratulations MAGIC NUMBER IS: {0}", x);
+            return false;
         }
     }
 }
