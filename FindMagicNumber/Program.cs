@@ -10,6 +10,7 @@ namespace FindMagicNumber
     {
         static void Main()
         {
+            //initial project start
             Console.WriteLine("Hello World!");
 
             Console.ReadKey();
