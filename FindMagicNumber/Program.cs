@@ -25,7 +25,7 @@ namespace FindMagicNumber
             {
                 Console.WriteLine("Number " + numberInput + " is not a Magic Number!");
             }
-            //1. Convertion to array
+            //1. Convertion to array//
             // Console.WriteLine("Converted input to array");
             // test display
             /*
