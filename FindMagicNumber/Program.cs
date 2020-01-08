@@ -15,8 +15,18 @@ namespace FindMagicNumber
             numberInput = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Your number is " +numberInput);
 
-           //1. Convertion to array
-           // Console.WriteLine("Converted input to array");
+            
+
+            if (MagicNumber(numberInput))
+            {
+                Console.WriteLine(numberInput + " is a Magic Number!");
+            }
+            else
+            {
+                Console.WriteLine("Number " + numberInput + " is not a Magic Number!");
+            }
+            //1. Convertion to array
+            // Console.WriteLine("Converted input to array");
             // test display
             /*
             for (int i = 0; i <= ConvertToArray(numberInput).Length; i++)
@@ -27,12 +37,30 @@ namespace FindMagicNumber
 
             //2. Check if every element in array ConvertToArray(numberInput) is unique
             //CheckIfUniqueElement(ConvertToArray(numberInput));
+            /*
              if (CheckIfUniqueElement(ConvertToArray(numberInput)))
              {
+
                 Console.WriteLine("All array elements are unique");
                 //3.
-                Check2XResult(numberInput);
+                int num2x = numberInput * 2;
+                int num3x = numberInput * 3;
+                int num4x = numberInput * 4;
+                int num5x = numberInput * 5;
+                int num6x = numberInput * 6;
+
+                CheckNumberResult(num2x, numberInput);
+
+                if (CheckNumberResult(num2x, numberInput))
+                {
+                    Console.WriteLine("Multiplication 2x passed! "+ num2x);
+                }
+                else
+                {
+                    Console.WriteLine("Number " + numberInput + "is not a Magic Number!");
+                }
              }
+             */
 
             Console.ReadKey();
         }
@@ -78,34 +106,21 @@ namespace FindMagicNumber
             return isUnique;
         }
 
-        public static bool Check2XResult(int numberInput)
+        public static bool CheckNumberResult(int newNum, int numberInput)
         {
             bool resultCheck = false;
-            int num2x = numberInput * 2;
-            Console.WriteLine("Converted number "+ num2x);
+            Console.WriteLine("Converted number "+ newNum);
 
             //convert to array num2x
-            if (ConvertToArray(num2x).Length == 6)
+            if (ConvertToArray(newNum).Length == 6)
             {
                 //check if array ConvertToArray(num2x) has same elements as array ConvertToArray(numberInput), but in different positions
-                ArrayCheck(ConvertToArray(num2x), ConvertToArray(numberInput));
-
-                
-                if (ArrayCheck(ConvertToArray(num2x), ConvertToArray(numberInput)))
+                ArrayCheck(ConvertToArray(newNum), ConvertToArray(numberInput));
+                if (ArrayCheck(ConvertToArray(newNum), ConvertToArray(numberInput)))
                 {
-                    Console.WriteLine("Passed");
-                   // Console.WriteLine("Number "+ numberInput + "is a Magic Number!");
-                   // Console.WriteLine(numberInput  + " " + num2x);
-                    // check with numberInput* 3
-                }
-                else
-                Console.WriteLine("Number " + numberInput + "is not a Magic Number!");
-                
+                    resultCheck = true;
+                }  
             }
-            else Console.WriteLine("false");
-            
-          
-            
             return resultCheck;
         }
         public static bool ArrayCheck(int[] digits, int[] digitsOriginal)
@@ -129,6 +144,44 @@ namespace FindMagicNumber
             }
             return result;
         }
+        public static bool MagicNumber(int numberInput)
+        {
+            bool magicNumber = false;
+            if (CheckIfUniqueElement(ConvertToArray(numberInput)))
+            {
+                Console.WriteLine("All array elements are unique");
+                //3.
+                int num2x = numberInput * 2;
+                int num3x = numberInput * 3;
+                int num4x = numberInput * 4;
+                int num5x = numberInput * 5;
+                int num6x = numberInput * 6;
 
+                //CheckNumberResult(num2x, numberInput);
+
+                if (CheckNumberResult(num2x, numberInput))
+                {
+                    Console.WriteLine("Multiplication 2x passed! " + num2x);
+                    if (CheckNumberResult(num3x, numberInput))
+                    {
+                        Console.WriteLine("Multiplication 3x passed! " + num3x);
+                        if (CheckNumberResult(num4x, numberInput))
+                        {
+                            Console.WriteLine("Multiplication 4x passed! " + num4x);
+                            if (CheckNumberResult(num5x, numberInput))
+                            {
+                                Console.WriteLine("Multiplication 5x passed! " + num5x);
+                                if (CheckNumberResult(num6x, numberInput))
+                                {
+                                    Console.WriteLine("Multiplication 6x passed! " + num6x);
+                                    magicNumber = true;
+                                }
+                            }
+                        }
+                    }         
+                }
+            }
+            return magicNumber;
+        }
     }
 }
