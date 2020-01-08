@@ -10,7 +10,7 @@ namespace FindMagicNumber
     {
         static void Main()
         {
-            Console.WriteLine("Please input 6 digit number");
+         //   Console.WriteLine("Please input 6 digit number");
             int numberInput;
 
             //    numberInput = Convert.ToInt32(Console.ReadLine());
