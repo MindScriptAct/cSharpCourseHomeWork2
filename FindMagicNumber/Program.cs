@@ -16,7 +16,7 @@ namespace FindMagicNumber
             Console.WriteLine("Your number is " +numberInput);
 
            //1. Convertion to array
-            Console.WriteLine("Converted input to array");
+           // Console.WriteLine("Converted input to array");
             // test display
             /*
             for (int i = 0; i <= ConvertToArray(numberInput).Length; i++)
@@ -40,9 +40,32 @@ namespace FindMagicNumber
         //static int ConvertToArray(int numberInput)
         public static int[] ConvertToArray(int numberInput)
         {
-            int[] digits = new int[6];
-            digits = numberInput.ToString().ToCharArray().Select(Convert.ToInt32).ToArray();
-            return digits;
+             var result = new int[numDigits(numberInput)];
+           
+            for (int i = result.Length - 1; i >= 0; i--)
+            {
+                result[i] = numberInput % 10;
+                numberInput /= 10;
+            }
+          
+            return result;
+        }
+        public static int numDigits(int n)
+        {
+            if (n < 0)
+            {
+                n = (n == Int32.MinValue) ? Int32.MaxValue : -n;
+            }
+            if (n < 10) return 1;
+            if (n < 100) return 2;
+            if (n < 1000) return 3;
+            if (n < 10000) return 4;
+            if (n < 100000) return 5;
+            if (n < 1000000) return 6;
+            if (n < 10000000) return 7;
+            if (n < 100000000) return 8;
+            if (n < 1000000000) return 9;
+            return 10;
         }
         public static bool CheckIfUniqueElement(int[] digits)
         {
@@ -64,10 +87,20 @@ namespace FindMagicNumber
             //convert to array num2x
             if (ConvertToArray(num2x).Length == 6)
             {
-                Console.WriteLine("Varom toliau");
                 //check if array ConvertToArray(num2x) has same elements as array ConvertToArray(numberInput), but in different positions
-                Array2xCheck(ConvertToArray(num2x), ConvertToArray(numberInput));
+                ArrayCheck(ConvertToArray(num2x), ConvertToArray(numberInput));
 
+                
+                if (ArrayCheck(ConvertToArray(num2x), ConvertToArray(numberInput)))
+                {
+                    Console.WriteLine("Passed");
+                   // Console.WriteLine("Number "+ numberInput + "is a Magic Number!");
+                   // Console.WriteLine(numberInput  + " " + num2x);
+                    // check with numberInput* 3
+                }
+                else
+                Console.WriteLine("Number " + numberInput + "is not a Magic Number!");
+                
             }
             else Console.WriteLine("false");
             
@@ -75,16 +108,25 @@ namespace FindMagicNumber
             
             return resultCheck;
         }
-        public static bool Array2xCheck(int[] digits, int[] digitsOriginal)
+        public static bool ArrayCheck(int[] digits, int[] digitsOriginal)
         {
             bool result = false;
-            // check if array digits has same elements as array digitsOriginal
-            for (int i = 0; i <= digits.Length; i++)
+            int resultCheck = 0;
+            for (int i = 0; i < digits.Length; i++)
             {
-                //if (digitsOriginal.find(i))
-                Console.WriteLine(i);
+                int pos = Array.IndexOf(digitsOriginal, digits[i]);
+                if (pos > -1)
+                {
+                    if (pos !=i)
+                    {
+                        resultCheck++;
+                    }
+                }
             }
-
+            if (resultCheck == digitsOriginal.Length)
+            {
+                result = true;
+            }
             return result;
         }
 
